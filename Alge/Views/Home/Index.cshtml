@@ -1,0 +1,27 @@
+﻿@model List<ApplicationViewModel>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/main.min.css" asp-add-nonce="true" />
+
+<div class="row">
+    @foreach (var application in Model)
+    {
+        <a href="@application.Link">
+            <div id="app">
+                <div class="body">
+                    <img src="~/img/@application.Icon" />
+                    <br>
+                    <h3> @application.Name </h3>
+                </div>
+                <div class="footer">
+                    <div class="section text-left"> Version <br> @application.Version </div>
+                    <div class="section text-right"> Last Updated <br> @application.LastUpdated.ToShortDateString() </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+<a id="fontawesomeLicense" href="libs/fontawesome.txt">Font Awesome License</a>

@@ -1,0 +1,39 @@
+﻿.row {
+  display: flex;
+  width: 70%;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-top: 3%; }
+
+#app {
+  width: 250px;
+  height: 250px;
+  border-radius: 0.25em;
+  box-shadow: 0 0 0 1px #c5d0d1;
+  background-color: white; }
+  #app .body {
+    height: 79%;
+    text-align: center; }
+  #app .footer {
+    height: 21%;
+    background: #f3f3f3;
+    display: flex;
+    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25em; }
+    #app .footer .section {
+      font-size: 0.85em;
+      width: 50%;
+      padding: 3%; }
+
+#fontawesomeLicense {
+  position: absolute;
+  bottom: 9%;
+  right: 3%;
+  font-size: 0.5em; }
+
+img {
+  width: 25%;
+  padding: 5%; }
+

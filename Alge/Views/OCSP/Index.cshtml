@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "OCSP Assessor";
+}
+<link href="~/css/ocsp.min.css" rel="stylesheet" asp-add-nonce="true" />
+<div id="content">
+    <h2>OCSP Assessor</h2>
+
+    @using (Html.BeginForm("test", "ocsp", FormMethod.Get))
+    {
+        <label for="hostname">Hostname: </label><input id="hostname" name="Hostname" type="text" placeholder="ex. www.google.com" pattern="[\w.]{4,}" title="Only alphanumeric characters and periods are allowed!" />
+        <button type="submit">Submit</button>
+        <div class="question">What is OCSP?</div>
+        <div class="answer">OCSP(or Online Certificate Status Protocol) is a protocol that checks the validity of a TLS certficiate. Whenever you connect to a website that supports encryption(such as this one), you'll see a green lock in the URL bar. In order for a website to support encryption, a website needs a certficiate pair. One certificate gives the visitor's broswer information on how to "lock" or encrypt its traffic so that it's sent securely over the internet. The other certificate can "unlock" or decrypt the data. Think of this system as a key and a lock. When you visit a website, the website gives you a lock. Before you send any data back to the website, your browser locks the information. The information can only be unlocked by a key which the website has. The certificate pair is works exactly like the lock and key analogy. In order to establish trust, popular companies like Google issue these certificates. Sometimes, websites are hacked and the website owner needs to tell everyone to not trust their old certificate. This is where OCSP comes in. Whenever a visitor's browser visits a site, the broswer will first ask the company that issued the certificate if it's valid. This process is known as OCSP. The tool above will ask the website's certificate issuer if the certificate is valid or not.</div>
+    }
+
+</div>

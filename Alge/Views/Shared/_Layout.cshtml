@@ -1,0 +1,34 @@
+﻿<!doctype html>
+
+<html lang="en">
+<!--Version @Startup.Configuration["Version"] published on @Startup.Configuration["Publish Date"]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>Alge</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand" asp-add-nonce="true" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous" asp-add-nonce="true"></script>
+    <script src="~/js/site.js" asp-add-nonce="true"></script>
+    <link rel="stylesheet" href="~/css/common.min.css" asp-add-nonce="true" />
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                @Html.ActionLink("Home", "Index", "Home")
+            </li>
+            <li>
+                <a href="">Blog</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>&copy; @DateTime.Now.Year Alex Gebhard </footer>
+</body>
+
+</html>
