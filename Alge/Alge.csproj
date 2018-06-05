@@ -5,6 +5,8 @@
     <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
     <AssemblyName>Alge</AssemblyName>
     <RootNamespace>Alge</RootNamespace>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>4a3433d8-bc29-4a8e-a989-afd00f90895c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

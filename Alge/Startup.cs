@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using Alge.Controllers;
+using Alge.Domain.Enums;
 using Alge.Domain.Infastructure;
 using Alge.Domain.Interfaces.Infastructure;
 using Alge.Domain.Services;
@@ -41,6 +42,7 @@ namespace Alge
             //Special Registrations
             builder.RegisterType<NonceService>().As<INonceService>().InstancePerLifetimeScope();
             builder.RegisterInstance(new Settings(Configuration["Version"], Configuration.GetConnectionString("Publish Date"), Configuration["CSP"], Configuration["LogDirectory"])).As<ISettings>().SingleInstance();
+            builder.RegisterType<Ssl2ScanService>().Keyed<ITlsScanService>(Tls.SSL2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
