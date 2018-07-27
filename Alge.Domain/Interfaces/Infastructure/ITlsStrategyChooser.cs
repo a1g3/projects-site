@@ -7,6 +7,6 @@ namespace Alge.Domain.Interfaces
 {
     public interface ITlsStrategyChooser : IStrategyChooser<Tls, ITlsScanService>
     {
-        IList<string> Scan(string hostname);
+        IList<CipherSuites> Scan(string hostname);
     }
 }

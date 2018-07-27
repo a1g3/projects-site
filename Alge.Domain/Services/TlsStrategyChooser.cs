@@ -10,7 +10,7 @@ namespace Alge.Domain.Services
     {
         public TlsStrategyChooser(List<ITlsScanService> strategies) : base(strategies) { }
         
-        public IList<string> Scan(string hostname)
+        public IList<CipherSuites> Scan(string hostname)
         {
             return this.Service.Scan(hostname);
         }
