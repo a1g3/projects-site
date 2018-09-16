@@ -23,15 +23,15 @@ namespace Alge.Domain.Facades
                 (certificate, chain) = ConnectionService.LoadCertificates(hostname, port);
             } catch
             {
-                return new OcspDto() { Status = Enums.OCSPCertificateStatus.Unknown };
+                return new OcspDto() { Status = Enums.OcspCertificateStatus.Unknown };
             }
 
-            var req = OcspService.CreateOCSPReq(certificate, chain[1]);
-            var resp = OcspService.GetOCSPStatus(req);
-            var status = OcspService.ParseOCSPResponse(resp);
+            var req = OcspService.CreateOcspReq(certificate, chain[1]);
+            var resp = OcspService.GetOcspStatus(req);
+            var status = OcspService.ParseOcspResponse(resp);
             var x509Certificate = DotNetUtilities.ToX509Certificate(certificate);
 
-            status.Errors = CertificateValidationService.ValidateOCSPResponse(certificate, chain[1], resp);
+            status.Errors = CertificateValidationService.ValidateOcspResponse(certificate, chain[1], resp);
             status.Hostname = hostname;
             status.Certificate = new CertificateDto(){ Subject = x509Certificate.Subject, Issuer = x509Certificate.Issuer, SerialNumber = x509Certificate.GetSerialNumberString(), ExpirationDate = x509Certificate.GetExpirationDateString() };
 

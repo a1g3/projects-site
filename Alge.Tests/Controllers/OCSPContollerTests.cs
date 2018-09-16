@@ -7,10 +7,10 @@ using Moq;
 namespace Alge.Tests.Controllers
 {
     [TestClass]
-    public class OCSPContollerTests
+    public class OcspContollerTests
     {
         [TestMethod]
-        public void OCSPController_Test_URLFilter()
+        public void OcspController_Test_URLFilter()
         {
             // ARRANGE
             var ocspFacade = new Mock<IOcspFacade>();

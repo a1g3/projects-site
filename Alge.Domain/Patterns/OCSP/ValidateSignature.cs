@@ -6,7 +6,7 @@ using Org.BouncyCastle.X509;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Alge.Domain.Patterns.OCSP
+namespace Alge.Domain.Patterns.Ocsp
 {
     public class ValidateSignature : ValidatorBase
     {

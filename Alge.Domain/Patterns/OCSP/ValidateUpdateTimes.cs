@@ -4,7 +4,7 @@ using Org.BouncyCastle.X509;
 using System;
 using System.Collections.Generic;
 
-namespace Alge.Domain.Patterns.OCSP
+namespace Alge.Domain.Patterns.Ocsp
 {
     public class ValidateUpdateTimes : ValidatorBase
     {

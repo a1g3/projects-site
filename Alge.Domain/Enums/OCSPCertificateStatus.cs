@@ -1,6 +1,6 @@
 ﻿namespace Alge.Domain.Enums
 {
-    public enum OCSPCertificateStatus
+    public enum OcspCertificateStatus
     {
         Good,
         Revoked,

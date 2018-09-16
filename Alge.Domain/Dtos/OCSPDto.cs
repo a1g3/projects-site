@@ -9,7 +9,7 @@ namespace Alge.Domain.Dtos
         public string Hostname { get; set; }
         public CertificateDto Certificate { get; set; }
 
-        public OCSPCertificateStatus Status { get; set; }
+        public OcspCertificateStatus Status { get; set; }
         public DateTime RevocationTime { get; set; }
         public int RevocationReason { get; set; }
         public DateTime ProducedAt { get; set; }

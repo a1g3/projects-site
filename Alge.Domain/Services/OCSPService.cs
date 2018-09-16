@@ -27,7 +27,7 @@ namespace Alge.Domain.Services
 
         #endregion
 
-        public OcspReq CreateOCSPReq(X509Certificate certificate, X509Certificate issuer)
+        public OcspReq CreateOcspReq(X509Certificate certificate, X509Certificate issuer)
         {
             Certificate = certificate;
             Issuer = issuer;
@@ -45,7 +45,7 @@ namespace Alge.Domain.Services
             return gen.Generate();
         }
 
-        public IList<Uri> GetOCSPUris()
+        public IList<Uri> GetOcspUris()
         {
             List<Uri> ocspUris;
             try
@@ -64,10 +64,10 @@ namespace Alge.Domain.Services
             return ocspUris;
         }
 
-        public BasicOcspResp GetOCSPStatus(OcspReq OCSPrequest)
+        public BasicOcspResp GetOcspStatus(OcspReq ocspRequest)
         {
-            byte[] reqArray = OCSPrequest.GetEncoded();
-            var uris = GetOCSPUris();
+            byte[] reqArray = ocspRequest.GetEncoded();
+            var uris = GetOcspUris();
             OcspResp resp;
             try
             {
@@ -92,7 +92,7 @@ namespace Alge.Domain.Services
             }
         }
 
-        public OcspDto ParseOCSPResponse(BasicOcspResp brep)
+        public OcspDto ParseOcspResponse(BasicOcspResp brep)
         {
             SingleResp singleResp = brep.Responses[0];
             Object itstatus = singleResp.GetCertStatus();
@@ -104,10 +104,10 @@ namespace Alge.Domain.Services
             };
 
             if (itstatus == CertificateStatus.Good)
-                status.Status = OCSPCertificateStatus.Good;
+                status.Status = OcspCertificateStatus.Good;
             else if (itstatus is RevokedStatus revokedStatus)
             {
-                status.Status = OCSPCertificateStatus.Revoked;
+                status.Status = OcspCertificateStatus.Revoked;
                 status.RevocationTime = revokedStatus.RevocationTime;
                 try
                 {
@@ -118,7 +118,7 @@ namespace Alge.Domain.Services
                 }
             }
             else
-                status.Status = OCSPCertificateStatus.Unknown;
+                status.Status = OcspCertificateStatus.Unknown;
 
             return status;
         }

@@ -8,9 +8,9 @@ namespace Alge.Interfaces.Services
 {
     public interface IOcspService
     {
-        OcspReq CreateOCSPReq(X509Certificate certificate, X509Certificate issuer);
-        IList<Uri> GetOCSPUris();
-        BasicOcspResp GetOCSPStatus(OcspReq OCSPrequest);
-        OcspDto ParseOCSPResponse(BasicOcspResp brep);
+        OcspReq CreateOcspReq(X509Certificate certificate, X509Certificate issuer);
+        IList<Uri> GetOcspUris();
+        BasicOcspResp GetOcspStatus(OcspReq ocspRequest);
+        OcspDto ParseOcspResponse(BasicOcspResp brep);
     }
 }

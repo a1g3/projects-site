@@ -1,6 +1,6 @@
 ﻿using Alge.Domain.Enums;
 using Alge.Domain.Interfaces.Services;
-using Alge.Domain.Patterns.OCSP;
+using Alge.Domain.Patterns.Ocsp;
 using Org.BouncyCastle.Ocsp;
 using Org.BouncyCastle.X509;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace Alge.Domain.Services
     public class CertificateValidationService : ICertificateValidationService
     {
 
-        public IList<KeyValuePair<CertificateValidationRules, string>> ValidateOCSPResponse(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
+        public IList<KeyValuePair<CertificateValidationRules, string>> ValidateOcspResponse(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
         {
             ValidateCertificateId validateCertificateId = new ValidateCertificateId();
             ValidateSignature validateSignature = new ValidateSignature();

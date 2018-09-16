@@ -3,7 +3,7 @@ using Org.BouncyCastle.Ocsp;
 using Org.BouncyCastle.X509;
 using System.Collections.Generic;
 
-namespace Alge.Domain.Patterns.OCSP
+namespace Alge.Domain.Patterns.Ocsp
 {
     public class ValidateCertificateId : ValidatorBase
     {
@@ -15,7 +15,7 @@ namespace Alge.Domain.Patterns.OCSP
             CertificateID expectedId = new CertificateID(CertificateID.HashSha1, issuer, certificate.SerialNumber);
 
             if (!expectedId.SerialNumber.Equals(actualCertificateId.SerialNumber))
-                RecordError("Certificate Id's do not match!");
+                RecordError("Certificate IDs do not match!");
             if (!Org.BouncyCastle.Utilities.Arrays.AreEqual(expectedId.GetIssuerNameHash(), actualCertificateId.GetIssuerNameHash()))
                 RecordError("The issuer names do not match!");
 
