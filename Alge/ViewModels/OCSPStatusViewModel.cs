@@ -3,7 +3,7 @@ using System;
 
 namespace Alge.ViewModels
 {
-    public class OCSPStatusViewModel
+    public class OcspStatusViewModel
     {
         public int Status { get; set; }
         public DateTime RevocationTime { get; set; }

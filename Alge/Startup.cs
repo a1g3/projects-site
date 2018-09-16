@@ -37,7 +37,7 @@ namespace Alge
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly(), Assembly.Load("Alge.Domain")).AsImplementedInterfaces().PropertiesAutowired();
 
             //Controllers
-            builder.RegisterType<OCSPController>().PropertiesAutowired();
+            builder.RegisterType<OcspController>().PropertiesAutowired();
 
             //Special Registrations
             builder.RegisterType<NonceService>().As<INonceService>().InstancePerLifetimeScope();

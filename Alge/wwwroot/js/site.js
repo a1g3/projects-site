@@ -1,1 +1,0 @@
-﻿FontAwesomeConfig = { autoAddCss: false };

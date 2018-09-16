@@ -8,13 +8,13 @@ using System.Collections.Generic;
 
 namespace Alge.Domain.Facades
 {
-    public class OCSPFacade : IOCSPFacade
+    public class OcspFacade : IOcspFacade
     {
-        public IOCSPService OcspService { get; set; }
+        public IOcspService OcspService { get; set; }
         public IConnectionService ConnectionService { get; set; }
         public ICertificateValidationService CertificateValidationService { get; set; }
 
-        public OCSPDto GetStatus(string hostname, int port)
+        public OcspDto GetStatus(string hostname, int port)
         {
             X509Certificate certificate;
             List<X509Certificate> chain;
@@ -23,7 +23,7 @@ namespace Alge.Domain.Facades
                 (certificate, chain) = ConnectionService.LoadCertificates(hostname, port);
             } catch
             {
-                return new OCSPDto() { Status = Enums.OCSPCertificateStatus.Unknown };
+                return new OcspDto() { Status = Enums.OCSPCertificateStatus.Unknown };
             }
 
             var req = OcspService.CreateOCSPReq(certificate, chain[1]);

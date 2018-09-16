@@ -13,10 +13,10 @@ namespace Alge.Tests.Controllers
         public void OCSPController_Test_URLFilter()
         {
             // ARRANGE
-            var ocspFacade = new Mock<IOCSPFacade>();
-            ocspFacade.Setup(x => x.GetStatus("test.com", 443)).Returns(new OCSPDto());
+            var ocspFacade = new Mock<IOcspFacade>();
+            ocspFacade.Setup(x => x.GetStatus("test.com", 443)).Returns(new OcspDto());
 
-            var controller = new OCSPController() { OcspFacade = ocspFacade.Object };
+            var controller = new OcspController() { OcspFacade = ocspFacade.Object };
 
             // ACT
             var result = controller.Test("https://test.com");

@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alge.Controllers
 {
-    public class OCSPController : Controller
+    public class OcspController : Controller
     {
-        public IOCSPFacade OcspFacade { get; set; }
+        public IOcspFacade OcspFacade { get; set; }
 
         [HttpGet]
         public IActionResult Index()
@@ -20,7 +20,7 @@ namespace Alge.Controllers
         [HttpGet]
         public IActionResult Test(string hostname)
         {
-            OCSPStatusViewModel viewModel;
+            OcspStatusViewModel viewModel;
             if (!String.IsNullOrEmpty(hostname))
             {
                 hostname = Regex.Replace(hostname, "(?i)(https://|http://)", String.Empty);
@@ -28,7 +28,7 @@ namespace Alge.Controllers
                     hostname = hostname.Substring(0, hostname.IndexOf("/"));
                 hostname = WebUtility.UrlEncode(hostname);
                 var status = OcspFacade.GetStatus(hostname, 443);
-                viewModel = new OCSPStatusViewModel()
+                viewModel = new OcspStatusViewModel()
                     {
                         Status = (int)status.Status,
                         ThisUpdate = status.ThisUpdate,
@@ -39,7 +39,7 @@ namespace Alge.Controllers
                         Certificate = status.Certificate
                     };
             } else
-                viewModel = new OCSPStatusViewModel() { Status = -1, Error = "Please enter a valid hostname!" };
+                viewModel = new OcspStatusViewModel() { Status = -1, Error = "Please enter a valid hostname!" };
 
             return View("Result",viewModel);
         }

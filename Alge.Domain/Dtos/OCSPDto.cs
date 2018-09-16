@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Alge.Domain.Dtos
 {
-    public class OCSPDto
+    public class OcspDto
     {
         public string Hostname { get; set; }
         public CertificateDto Certificate { get; set; }

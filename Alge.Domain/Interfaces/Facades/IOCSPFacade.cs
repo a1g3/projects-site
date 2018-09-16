@@ -2,8 +2,8 @@
 
 namespace Alge.Domain.Interfaces.Facades
 {
-    public interface IOCSPFacade
+    public interface IOcspFacade
     {
-        OCSPDto GetStatus(string hostname, int port);
+        OcspDto GetStatus(string hostname, int port);
     }
 }

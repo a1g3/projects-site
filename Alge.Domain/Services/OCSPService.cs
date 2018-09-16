@@ -15,7 +15,7 @@ using System.Numerics;
 
 namespace Alge.Domain.Services
 {
-    public class OCSPService : IOCSPService
+    public class OcspService : IOcspService
     {
 
         #region Properties
@@ -92,11 +92,11 @@ namespace Alge.Domain.Services
             }
         }
 
-        public OCSPDto ParseOCSPResponse(BasicOcspResp brep)
+        public OcspDto ParseOCSPResponse(BasicOcspResp brep)
         {
             SingleResp singleResp = brep.Responses[0];
             Object itstatus = singleResp.GetCertStatus();
-            OCSPDto status = new OCSPDto()
+            OcspDto status = new OcspDto()
             {
                 ProducedAt = brep.ProducedAt,
                 ThisUpdate = singleResp.ThisUpdate,

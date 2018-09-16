@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace Alge.Interfaces.Services
 {
-    public interface IOCSPService
+    public interface IOcspService
     {
         OcspReq CreateOCSPReq(X509Certificate certificate, X509Certificate issuer);
         IList<Uri> GetOCSPUris();
         BasicOcspResp GetOCSPStatus(OcspReq OCSPrequest);
-        OCSPDto ParseOCSPResponse(BasicOcspResp brep);
+        OcspDto ParseOCSPResponse(BasicOcspResp brep);
     }
 }
