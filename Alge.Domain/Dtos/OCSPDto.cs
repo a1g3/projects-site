@@ -16,6 +16,6 @@ namespace Alge.Domain.Dtos
         public DateTime ThisUpdate { get; set; }
         public DateTime NextUpdate { get; set; }
 
-        public IList<KeyValuePair<CertificateValidationRules, string>> Errors { get; set; }
+        public IList<(CertificateValidationRules CertificateValidationRule, string Description)> Errors { get; set; }
     }
 }

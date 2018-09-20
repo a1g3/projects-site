@@ -7,6 +7,6 @@ namespace Alge.Domain.Interfaces.Services
 {
     public interface ICertificateValidationService
     {
-        IList<KeyValuePair<CertificateValidationRules, string>> ValidateOcspResponse(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response);
+        IList<(CertificateValidationRules CertificateValidationRule, string Description)> ValidateOcspResponse(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response);
     }
 }

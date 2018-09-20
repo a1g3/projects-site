@@ -10,7 +10,7 @@ namespace Alge.Domain.Services
     public class CertificateValidationService : ICertificateValidationService
     {
 
-        public IList<KeyValuePair<CertificateValidationRules, string>> ValidateOcspResponse(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
+        public IList<(CertificateValidationRules CertificateValidationRule, string Description)> ValidateOcspResponse(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
         {
             ValidateCertificateId validateCertificateId = new ValidateCertificateId();
             ValidateSignature validateSignature = new ValidateSignature();

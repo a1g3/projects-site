@@ -5,6 +5,7 @@ using Alge.Domain.Enums;
 using Alge.Domain.Infastructure;
 using Alge.Domain.Interfaces.Infastructure;
 using Alge.Domain.Services;
+using Alge.Helpers;
 using Alge.Interfaces.Services;
 using Alge.Middleware;
 using Autofac;
@@ -57,6 +58,8 @@ namespace Alge
                 app.UseStatusCodePages();
                 Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.RollingFile(Path.Combine(Configuration["LogDirectory"], "log-{Date}.txt")).CreateLogger();
             }
+
+            AutoMapperConfig.Init();
 
             app.UseMiddleware<NonceMiddleware>();
             app.UseMiddleware<ErrorMiddleware>();

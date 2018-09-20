@@ -9,7 +9,7 @@ namespace Alge.Domain.Patterns.Ocsp
     {
         protected override CertificateValidationRules Rule => CertificateValidationRules.ValidateCertificateId;
 
-        public override IList<KeyValuePair<CertificateValidationRules, string>> HandleValidation(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
+        public override IList<(CertificateValidationRules CertificateValidationRule, string Description)> HandleValidation(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
         {
             CertificateID actualCertificateId = response.Responses[0].GetCertID();
             CertificateID expectedId = new CertificateID(CertificateID.HashSha1, issuer, certificate.SerialNumber);

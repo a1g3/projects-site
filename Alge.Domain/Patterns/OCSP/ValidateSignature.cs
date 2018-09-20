@@ -12,7 +12,7 @@ namespace Alge.Domain.Patterns.Ocsp
     {
         protected override CertificateValidationRules Rule => CertificateValidationRules.ValidateSignature;
 
-        public override IList<KeyValuePair<CertificateValidationRules, string>> HandleValidation(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
+        public override IList<(CertificateValidationRules CertificateValidationRule, string Description)> HandleValidation(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
         {
             if (!response.Verify(issuer.GetPublicKey()))
             {

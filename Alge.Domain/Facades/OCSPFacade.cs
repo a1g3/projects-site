@@ -1,4 +1,5 @@
 ﻿using Alge.Domain.Dtos;
+using Alge.Domain.Enums;
 using Alge.Domain.Interfaces.Facades;
 using Alge.Domain.Interfaces.Services;
 using Alge.Interfaces.Services;
@@ -18,6 +19,7 @@ namespace Alge.Domain.Facades
         {
             X509Certificate certificate;
             List<X509Certificate> chain;
+            OcspDto status = new OcspDto();
             try
             {
                 (certificate, chain) = ConnectionService.LoadCertificates(hostname, port);
@@ -28,10 +30,18 @@ namespace Alge.Domain.Facades
 
             var req = OcspService.CreateOcspReq(certificate, chain[1]);
             var resp = OcspService.GetOcspStatus(req);
-            var status = OcspService.ParseOcspResponse(resp);
+            
+            if(resp != null)
+            {
+                status = OcspService.ParseOcspResponse(resp);
+                status.Errors = CertificateValidationService.ValidateOcspResponse(certificate, chain[1], resp);
+            } else
+            {
+                status.Status = OcspCertificateStatus.Unknown;
+            }
+
             var x509Certificate = DotNetUtilities.ToX509Certificate(certificate);
 
-            status.Errors = CertificateValidationService.ValidateOcspResponse(certificate, chain[1], resp);
             status.Hostname = hostname;
             status.Certificate = new CertificateDto(){ Subject = x509Certificate.Subject, Issuer = x509Certificate.Issuer, SerialNumber = x509Certificate.GetSerialNumberString(), ExpirationDate = x509Certificate.GetExpirationDateString() };
 
