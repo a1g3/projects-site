@@ -1,7 +1,7 @@
 ﻿using Alge.Domain.Interfaces.Patterns.SignalR;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Alge.Domain.Patterns.SignalR
+namespace Alge.SignalR
 {
     public class CertStreamClient : ICertStreamClient
     {

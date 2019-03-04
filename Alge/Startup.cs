@@ -31,6 +31,7 @@ namespace Alge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddViewOptions(opt => opt.HtmlHelperOptions.ClientValidationEnabled = false).AddControllersAsServices();
+            services.AddSignalR();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

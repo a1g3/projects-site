@@ -1,4 +1,4 @@
-﻿namespace Alge.Domain.Patterns.SignalR
+﻿namespace Alge.SignalR
 {
     public class CertStreamHub : BaseHub
     {

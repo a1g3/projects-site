@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Alge.Domain.Patterns.SignalR
+namespace Alge.SignalR
 {
     public abstract class BaseHub : Hub
     {
