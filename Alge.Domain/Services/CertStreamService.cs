@@ -1,9 +1,8 @@
-﻿using Alge.Domain.Interfaces.Patterns.SignalR;
+﻿using Alge.Domain.Interfaces.Services;
 using Alge.Domain.Models;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -13,8 +12,8 @@ namespace Alge.Domain.Services
 {
     public class CertStreamService : IHostedService
     {
-        public ICertStreamClient CertStreamClient { get; set; }
-        private static int CertCount { get; set; }
+        public ICertStreamCertService CertStreamCertService { get; set; }
+        public static int CertCount { get; set; }
         public Task StartAsync(CancellationToken cancellationToken)
         {
             return MonitorUpdates(cancellationToken);
@@ -50,7 +49,12 @@ namespace Alge.Domain.Services
         {
             var response = JsonConvert.DeserializeObject<CertStreamResponseModel>(responseText);
             if (response.MessageType.Equals("heartbeat", StringComparison.OrdinalIgnoreCase)) return;
-            CertStreamClient.UpdateCertificateCount(++CertCount);
+            ++CertCount;
         }
+    }
+
+    public class CertStreamCertService : ICertStreamCertService
+    {
+        public int GetCertificateCount() => CertStreamService.CertCount;
     }
 }

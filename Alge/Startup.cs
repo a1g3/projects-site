@@ -4,10 +4,12 @@ using Alge.Controllers;
 using Alge.Domain.Enums;
 using Alge.Domain.Infastructure;
 using Alge.Domain.Interfaces.Infastructure;
+using Alge.Domain.Interfaces.Services;
 using Alge.Domain.Services;
 using Alge.Helpers;
 using Alge.Interfaces.Services;
 using Alge.Middleware;
+using Alge.SignalR;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +33,7 @@ namespace Alge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddViewOptions(opt => opt.HtmlHelperOptions.ClientValidationEnabled = false).AddControllersAsServices();
+            services.AddHostedService<CertStreamService>();
             services.AddSignalR();
         }
 
@@ -44,7 +47,6 @@ namespace Alge
             //Special Registrations
             builder.RegisterType<NonceService>().As<INonceService>().InstancePerLifetimeScope();
             builder.RegisterInstance(new Settings(Configuration["Version"], Configuration.GetConnectionString("Publish Date"), Configuration["CSP"], Configuration["LogDirectory"])).As<ISettings>().SingleInstance();
-            builder.RegisterType<Ssl2ScanService>().Keyed<ITlsScanService>(Tls.SSL2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
