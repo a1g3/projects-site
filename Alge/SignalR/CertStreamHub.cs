@@ -4,12 +4,7 @@ using System.Threading.Tasks;
 
 namespace Alge.SignalR
 {
-    public class CertStreamHub : Hub, ICertStreamHub
+    public class CertStreamHub : Hub
     {
-        public async Task UpdateCertificateCount(int certNumber)
-        {
-            await Task.CompletedTask;
-            //await Clients.All.SendCoreAsync("UpdateCertificateNumber", new object[] { certNumber });
-        }
     }
 }

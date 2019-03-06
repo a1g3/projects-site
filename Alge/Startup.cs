@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using Alge.Controllers;
 using Alge.Domain.Enums;
@@ -33,17 +34,21 @@ namespace Alge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddViewOptions(opt => opt.HtmlHelperOptions.ClientValidationEnabled = false).AddControllersAsServices();
-            services.AddHostedService<CertStreamService>();
+            services.AddSingleton<ICertStreamClient, CertStreamClient>();
+            services.AddSingleton<Microsoft.Extensions.Hosting.IHostedService, CertStreamService>();
             services.AddSignalR();
+            services.AddHostedService<CertStreamService>();
+
+            //return services.BuildServiceProvider();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly(), Assembly.Load("Alge.Domain")).AsImplementedInterfaces().PropertiesAutowired();
-
+        
             //Controllers
             builder.RegisterType<OcspController>().PropertiesAutowired();
-
+        
             //Special Registrations
             builder.RegisterType<NonceService>().As<INonceService>().InstancePerLifetimeScope();
             builder.RegisterInstance(new Settings(Configuration["Version"], Configuration.GetConnectionString("Publish Date"), Configuration["CSP"], Configuration["LogDirectory"])).As<ISettings>().SingleInstance();
@@ -67,6 +72,11 @@ namespace Alge
             app.UseMiddleware<NonceMiddleware>();
             app.UseMiddleware<ErrorMiddleware>();
             app.UseStaticFiles();
+
+            app.UseSignalR(configure =>
+            {
+                configure.MapHub<CertStreamHub>("/certstream");
+            });
 
             app.UseMvc(routes =>
             {
