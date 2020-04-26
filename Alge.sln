@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alge", "Alge\Alge.csproj", "{D99FDC9E-4805-4A08-BB5A-4C206ACE2946}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alge.Tests", "Alge.Tests\Alge.Tests.csproj", "{ED29F378-A136-4DD1-AA06-39B5E07B02B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alge.Domain", "Alge.Domain\Alge.Domain.csproj", "{23382962-E2E6-4D56-8FDC-70E82F150FA0}"
 EndProject
@@ -19,10 +17,6 @@ Global
 		{D99FDC9E-4805-4A08-BB5A-4C206ACE2946}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D99FDC9E-4805-4A08-BB5A-4C206ACE2946}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D99FDC9E-4805-4A08-BB5A-4C206ACE2946}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED29F378-A136-4DD1-AA06-39B5E07B02B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED29F378-A136-4DD1-AA06-39B5E07B02B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED29F378-A136-4DD1-AA06-39B5E07B02B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED29F378-A136-4DD1-AA06-39B5E07B02B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23382962-E2E6-4D56-8FDC-70E82F150FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23382962-E2E6-4D56-8FDC-70E82F150FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23382962-E2E6-4D56-8FDC-70E82F150FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU

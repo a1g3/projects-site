@@ -2,7 +2,6 @@
 using Alge.Interfaces.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Threading.Tasks;
 
 namespace Alge.Middleware
@@ -17,13 +16,13 @@ namespace Alge.Middleware
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, IHostingEnvironment hostingEnvironment)
+        public async Task Invoke(HttpContext context, IWebHostEnvironment hostingEnvironment)
         {
             var settings = (ISettings)context.RequestServices.GetService(typeof(ISettings));
             var nonceService = (INonceService)context.RequestServices.GetService(typeof(INonceService));
-            var nonceString = String.Empty;
+            var nonceString = string.Empty;
             Nonce = nonceService.GetNonce();
-            nonceString = String.Format(settings.CSP, Nonce);
+            nonceString = string.Format(settings.CSP, Nonce);
 
             context.Response.OnStarting((state) => {
                 if (context.Response.ContentType != null && context.Response.ContentType.Contains("text/html;"))

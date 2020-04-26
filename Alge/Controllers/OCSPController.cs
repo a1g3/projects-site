@@ -11,6 +11,7 @@ namespace Alge.Controllers
     public class OcspController : Controller
     {
         public IOcspFacade OcspFacade { get; set; }
+        public IMapper Mapper { get; set; }
 
         [HttpGet]
         public IActionResult Index()
@@ -22,7 +23,7 @@ namespace Alge.Controllers
         public IActionResult Test(string hostname)
         {
             OcspStatusViewModel viewModel;
-            if (!String.IsNullOrEmpty(hostname))
+            if (!string.IsNullOrEmpty(hostname))
             {
                 hostname = Regex.Replace(hostname, "(?i)(https://|http://)", String.Empty);
                 if(hostname.Contains("/"))
