@@ -57,7 +57,7 @@ namespace Alge
             } else
             {
                 app.UseStatusCodePages();
-                Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.RollingFile(Path.Combine(Configuration["LogDirectory"], "log-{Date}.txt")).CreateLogger();
+                Log.Logger = new LoggerConfiguration().WriteTo.File(Path.Combine(Configuration["LogDirectory"], "log.txt"), rollingInterval: RollingInterval.Day).CreateLogger();
             }
 
             app.UseMiddleware<NonceMiddleware>();

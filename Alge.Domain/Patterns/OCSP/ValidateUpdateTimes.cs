@@ -13,7 +13,7 @@ namespace Alge.Domain.Patterns.Ocsp
         public override IList<(CertificateValidationRules CertificateValidationRule, string Description)> HandleValidation(X509Certificate certificate, X509Certificate issuer, BasicOcspResp response)
         {
             var singleResp = response.Responses[0];
-            if (singleResp.NextUpdate == null || singleResp.NextUpdate.Value == null || singleResp.NextUpdate.Value <= DateTime.Now)
+            if (singleResp.NextUpdate == null || singleResp.NextUpdate.Value <= DateTime.Now)
                 RecordError("Invalid NextUpdate value!");
             if ((singleResp.ThisUpdate - DateTime.Now.AddDays(-7)).TotalDays > 7)
                 RecordError("Invalid ThisUpdate value!");
