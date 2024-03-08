@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>Alge</AssemblyName>
     <RootNamespace>Alge</RootNamespace>
     <UserSecretsId>4a3433d8-bc29-4a8e-a989-afd00f90895c</UserSecretsId>
